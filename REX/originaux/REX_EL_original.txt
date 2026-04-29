@@ -1,0 +1,185 @@
+Introduction
+
+Ce Retour d'Expérience (REX) s'inscrit dans le cadre de la formation CPI DEV - Chef de Projet Informatique. 
+Il retrace mon implication personnelle dans le projet CYNA, en analysant les choix techniques que j'ai effectués, les responsabilités que j'ai assumées, et ce que cette expérience m'a apporté sur le plan professionnel et humain.
+
+CYNA est une société spécialisée dans la cybersécurité, dont l'offre s'articule autour de services managés tels que le SOC, l'EDR et le XDR. 
+Ces solutions s'adressent principalement aux entreprises souhaitant externaliser la surveillance et la protection de leur système d'information. 
+Dans ce contexte, CYNA a souhaité moderniser son accès commercial en développant une plateforme e-commerce dédiée, permettant à ses clients de découvrir et de souscrire directement à ses services en ligne.
+
+Le projet CYNA représente donc la concrétisation de ce besoin : construire from scratch une application web e-commerce complète, intégrant la gestion des utilisateurs, des produits, des abonnements et des paiements, dans un environnement technique moderne et structuré.
+
+Notre groupe de travail était composé de quatre étudiants : Jessica, Emmanuel, François et Théo. 
+Nous avons organisé notre travail, avec des sprints réguliers. J'ai occupé au sein de cette équipe le rôle de Lead Développeur, ce qui impliquait non seulement de contribuer activement au développement technique du projet, mais également de coordonner les choix d'architecture, de veiller à la cohérence du code produit par l'équipe, et d'accompagner mes collègues dans la résolution des blocages techniques.
+
+
+
+Présentation de mon rôle.
+
+
+Au sein du projet CYNA, j'ai assumé le rôle de Lead Développeur Backend, avec une responsabilité transversale qui dépassait la simple contribution technique. 
+Mon périmètre couvrait trois domaines clés : la conception de l'architecture API, la mise en place du système d'authentification et la sécurisation globale de l'application.
+
+En tant que Lead, mon rôle ne se limitait pas à coder. 
+Il s'agissait avant tout de poser les fondations techniques sur lesquelles toute l'équipe allait s'appuyer. 
+Dès les premiers sprint, j'ai défini la structure des routes API avec NestJS, en établissant des conventions de nommage et d'organisation claires, afin de garantir une cohérence entre les différents modules développés par l'équipe.
+
+Sur le volet authentification, j'ai conçu et implémenté le système de connexion sécurisé basé sur des tokens JWT (JSON Web Token), en gérant aussi bien la création de session que la vérification des droits d'accès selon le profil utilisateur  client, administrateur ou technicien.
+
+La sécurité a constitué un fil conducteur de mon travail tout au long du projet : validation des entrées utilisateur, gestion des erreurs HTTP, protection contre les injections, et mise en place de middlewares dédiés pour filtrer les requêtes sensibles.
+
+Enfin, en tant que référent technique de l'équipe, j'ai accompagné mes camarades lors des blocages, et assuré la revue de code sur les pull requests GitHub pour maintenir un niveau de qualité homogène.
+
+
+
+Travail réalisé
+
+
+En tant que Lead Développeur Backend, mes contributions au projet CYNA ont été à la fois techniques et structurantes pour l'ensemble de l'équipe. 
+Voici les principales réalisations que j'ai menées au cours des sprints.
+
+
+Conception de l'architecture API avec NestJS
+
+J'ai posé les bases de l'architecture backend en structurant le projet NestJS en modules indépendants et cohérents : un module par domaine fonctionnel (utilisateurs, produits, abonnements, paiements). 
+Cette organisation a permis à l'équipe de travailler en parallèle sans générer de conflits inutiles et de maintenir un code lisible et maintenable tout au long du projet.
+
+
+Développement en TypeScript
+
+L'ensemble du backend a été développé en TypeScript. 
+J'ai défini les interfaces et les types personnalisés utilisés à travers les différents modules, ce qui a permis de fiabiliser les échanges de données entre les couches de l'application et de réduire les erreurs à l'exécution.
+
+
+Mise en place de la base de données PostgreSQL
+
+J'ai configuré et géré la base de données PostgreSQL, en définissant avec Jessica les modèles de données via Prisma ORM, et la cohérence des relations entre les entités et supervisé les migrations tout au long du projet.
+
+
+Sécurisation de l'API avec les Guards NestJS
+
+J'ai implémenté des Guards personnalisés pour protéger les routes sensibles de l'application. 
+Ces Guards permettent de vérifier les tokens JWT entrants, de contrôler les rôles et permissions des utilisateurs, et de bloquer toute requête non autorisée avant qu'elle n'atteigne la logique métier.
+
+
+Validation des données et rate limiting
+
+J'ai mis en place une couche de validation des données entrantes grâce aux décorateurs NestJS et à la bibliothèque class-validator, afin de garantir l'intégrité des informations reçues par le serveur. J'ai également configuré un système de rate limiting pour protéger l'API contre les abus et les tentatives d'attaque par force brute.
+
+
+Revue de code et accompagnement technique
+
+En tant que Lead, j'ai assuré la revue des pull requests de l'équipe sur GitHub, en veillant au respect des conventions établies et à la qualité globale du code produit. J'ai également accompagné mes camarades lors de blocages techniques, notamment sur des problèmes liés aux relations entre entités ou à la configuration de NestJS.
+
+
+
+Difficultés rencontrées
+
+
+Difficulté principale Endosser le rôle de Lead Développeur sans expérience préalable
+
+La difficulté la plus marquante que j'ai rencontrée dans ce projet n'était pas uniquement d'ordre technique : c'était avant tout d'assumer un rôle de Lead Développeur pour la première fois. 
+Être le référent technique de l'équipe impliquait de prendre des décisions d'architecture, de trancher sur des choix technologiques et d'accompagner mes camarades dans leurs blocages tout en gérant mes propres tâches de développement. 
+Au début du projet, cette double casquette était difficile à équilibrer. 
+Je me retrouvais parfois à hésiter sur des décisions structurantes, craignant que de mauvais choix en début de projet n'impactent l'ensemble de l'équipe sur les sprints suivants.
+
+
+Difficulté technique La maîtrise de NestJS et la mise en place des Guards
+
+Sur le plan technique, NestJS est un framework puissant mais qui demande un temps d'adaptation, notamment pour bien comprendre son système de modules, d'injection de dépendances et de décorateurs. 
+La mise en place des Guards personnalisés pour la gestion des rôles et des permissions a été particulièrement complexe à appréhender au départ, car elle nécessitait une bonne compréhension à la fois du cycle de vie des requêtes NestJS et du fonctionnement des tokens JWT.
+
+
+Ce qui m'a aidé à surmonter ces difficultés
+
+Mon parcours avant ce projet a été un vrai levier. 
+L'expérience acquise chez Mewo m'avait permis de me familiariser avec les environnements de développement en équipe, la rigueur du code et la gestion de projets réels. 
+Mon stage chez LSC360 a été déterminant : j'y ai développé une vraie autonomie technique, appris à lire et comprendre rapidement une documentation, et surtout gagné en confiance dans ma capacité à prendre des décisions techniques. 
+Cette expérience m'a donné les bases pour aborder le rôle de Lead avec plus de sérénité au fil des sprints, même si la courbe d'apprentissage a été un peu difficile en début de projet.
+
+
+Difficulté organisationnelle Coordonner l'équipe tout en contribuant au développement
+
+Organiser le travail de l'équipe, suivre l'avancement des tâches sur Trello, assurer les revues de code sur GitHub et rester disponible pour débloquer mes camarades tout en avançant sur mes propres développements a parfois été difficile à gérer dans les temps impartis par les sprints. 
+J'ai dû apprendre à prioriser, à déléguer certaines vérifications et à faire confiance aux membres de l'équipe pour gagner en efficacité collective.
+
+
+Solutions mises en place
+
+Pour pallier mon manque d'expérience dans ce rôle, j'ai adopté une approche progressive et humble. 
+
+Plutôt que de prétendre avoir toutes les réponses, j'ai fait le choix de documenter systématiquement les décisions d'architecture prises collectivement, en créant un espace de référence partagé accessible à toute l'équipe à tout moment. Cela permettait à chacun de s'y référer et d'éviter les malentendus sur les conventions à respecter. 
+
+J'ai également pris l'habitude de soumettre mes choix techniques à l'équipe avant de les imposer, ce qui a favorisé une dynamique de co-décision et renforcé la cohésion du groupe.
+Mon expérience en stage chez LSC360 m'avait appris qu'un bon Lead n'est pas celui qui sait tout, mais celui qui sait où chercher et comment embarquer son équipe. 
+
+C'est cette posture que j'ai essayé d'adopter tout au long du projet.
+
+
+Compétences acquises
+
+Le projet CYNA a constitué pour moi une étape charnière dans mon parcours de développeur, en me confrontant pour la première fois à des responsabilités techniques et humaines d'une ampleur que je n'avais pas encore eu l'occasion d'expérimenter.
+
+Compétences techniques
+
+Compétence                 			Niveau avant le projet             Niveau après le projet
+NestJS                          			Débutant                                  Opérationnel / autonome
+TypeScript                   			Débutant                                  Opérationnel / autonome
+PostgreSQL                  			Débutant                                  Opérationnel / autonome
+Sécurité API (Guards, JWT)		Débutant					Opérationnel / autonome
+Architecture modulaire			Débutant					Opérationnel / autonome
+
+Avant ce projet, je n'avais jamais structuré une API avec NestJS ni travaillé avec TypeScript dans un contexte d'équipe. 
+
+L'expérience acquise chez Mewo et lors de mon stage chez LSC360 m'avait donné des bases solides en développement, mais c'est véritablement le projet CYNA qui m'a permis de monter en compétence sur ces technologies de manière concrète et approfondie. 
+
+À l'issue du projet, je suis capable de concevoir une architecture API modulaire avec NestJS, de sécuriser des routes avec des Guards personnalisés, et de gérer une base de données relationnelle avec PostgreSQL de manière autonome.
+
+
+
+Travail en équipe
+
+
+Notre équipe était composée de quatre personnes : Jessica, Emmanuel, François et Théo. 
+
+En tant que Lead Développeur, j'occupais une position particulière dans cette dynamique collective : j'étais à la fois contributeur technique et point de référence pour l'équipe, ce qui m'a amené à porter une attention particulière à la façon dont nous collaborions au quotidien.
+
+
+Organisation et rituels
+
+Nous utilisions Microsoft Teams comme outil central de communication permettant à chacun de partager ses avancées, ses objectifs du jour et ses blocages éventuels. 
+En tant que Lead, j'animais régulièrement ces points pour m'assurer que les priorités du sprint étaient bien comprises et que personne ne restait bloqué sans le signaler. 
+Les tâches étaient organisées sur Trello selon un flux Backlog, In Progress, In Review et Done, et chaque développement faisait l'objet d'une pull request sur GitHub, que je relisais systématiquement avant validation afin de maintenir la cohérence et la qualité du code produit.
+
+
+Dynamique de groupe
+
+La dynamique au sein de l'équipe a été positive et stable tout au long du projet. Nous n'avons pas connu de tensions majeures, ce que j'attribue en grande partie à la clarté des rôles établie dès le début et à la communication ouverte que nous avons maintenue à travers nos rituels quotidiens. 
+Chacun savait ce qu'il avait à faire, et les échanges restaient constructifs même dans les moments de pression en fin de sprint.
+
+
+Le moment fort : livrer une fonctionnalité clé en équipe
+
+Le moment de collaboration que je retiens le plus est la livraison d'une fonctionnalité clé du projet, aboutissement d'un travail véritablement collectif. 
+Voir les contributions de chacun l'architecture API, la base de données, l'interface utilisateur s'assembler et fonctionner de bout en bout a été un moment fort. 
+En tant que Lead, c'est aussi le moment où j'ai réalisé concrètement la valeur de mon rôle : non pas avoir tout fait moi-même, mais avoir créé les conditions techniques et humaines pour que l'équipe puisse livrer ensemble quelque chose qui dépasse ce que chacun aurait pu produire seul.
+
+
+Bilan personnel
+
+Ce projet a représenté pour moi une expérience dense et exigeante, qui m'a poussé bien au-delà de ma zone de confort. 
+Arriver en tant que Lead Développeur sans expérience préalable dans ce rôle était un vrai défi, et je ressors de cette aventure avec le sentiment d'avoir réellement grandi, aussi bien techniquement qu'humainement.
+Ce que j'ai le plus apprécié dans ce projet est sans conteste la montée en compétence sur NestJS et TypeScript. 
+
+Partir de rien sur ces technologies et arriver à construire une API modulaire, sécurisée et fonctionnelle en conditions réelles a été extrêmement satisfaisant. 
+Comprendre la logique de NestJS ses modules, ses décorateurs, son système d'injection de dépendances et voir ces concepts prendre vie dans un projet concret est ce qui m'a le plus motivé tout au long des sprints.
+Ce que je ferais différemment si je recommençais : j'apprendrais bien plus tôt à mieux équilibrer mon rôle de Lead et mes propres tâches de développement. 
+
+J'ai parfois eu tendance à vouloir tout superviser moi-même, au détriment de ma propre productivité. 
+Avec le recul, je pense qu'instaurer des règles claires de fonctionnement en équipe dès le sprint 1 et faire davantage confiance à mes camarades m'aurait permis d'être plus efficace sur les deux tableaux.
+
+Ce projet m'a également confirmé que je souhaite approfondir mes compétences en développement backend, notamment sur les problématiques de sécurité des APIs et d'architecture logicielle. L'expérience acquise ici, combinée à celle de mon stage chez LSC360, me donne une base solide pour aborder des projets professionnels avec plus de sérénité et de méthode.
+
+Ma progression globale sur ce projet : 7/10
+
+Parce que j'ai su prendre en main un rôle nouveau et livrer un backend fonctionnel et sécurisé, mais je sais aussi que j'aurais pu mieux gérer l'équilibre entre leadership et développement, et que certaines décisions d'architecture auraient gagné à être mieux anticipées en amont.

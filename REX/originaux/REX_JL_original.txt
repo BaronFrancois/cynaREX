@@ -1,0 +1,197 @@
+Introduction
+
+Ce document est un Retour d'Expérience (REX) rédigé dans le cadre de la formation CPI DEV - Chef de Projet Informatique. 
+Il a pour objectif de présenter de manière personnelle et réflexive ma participation au projet CYNA, en retraçant mon rôle, mes réalisations, les difficultés rencontrées et les compétences acquises tout au long de ce projet.
+
+La société CYNA est une entreprise spécialisée dans la cybersécurité, proposant des services à destination des professionnels et des entreprises, notamment des solutions de type SOC (Security Operations Center), EDR (Endpoint Detection and Response) et XDR (Extended Detection and Response). 
+Face à la croissance de la demande en matière de cybersécurité, CYNA a exprimé le besoin de disposer d'une plateforme e-commerce moderne et fonctionnelle permettant à ses clients de consulter, sélectionner et souscrire à ses offres en ligne.
+
+Le projet CYNA consiste ainsi en la conception et le développement de cette plateforme e-commerce, pensée pour répondre aux exigences spécifiques du secteur de la cybersécurité. 
+Il s'agit d'un projet complet, allant de la modélisation de la base de données jusqu'à l'interface utilisateur, en passant par la création des routes API et la gestion des abonnements.
+
+Le groupe de travail chargé de ce projet est composé de quatre étudiants : Jessica, Emmanuel, François et Théo. 
+Ensemble, nous avons travaillé en nous répartissant les responsabilités selon nos profils et compétences. 
+Pour ma part, j'ai occupé le rôle de développeuse frontend, avec pour mission principale de concevoir et d'intégrer les interfaces utilisateur.
+
+
+
+Présentation de mon rôle
+
+Dans le projet CYNA, j'ai occupé le rôle de développeuse backend, avec un périmètre de responsabilité centré sur deux axes principaux : la gestion des inscriptions utilisateurs et la conception de la base de données.
+
+Dès le début du projet, je me suis positionnée sur la partie serveur de l'application, en travaillant sur la logique métier liée à l'authentification et à la création de comptes. 
+Cela impliquait de concevoir et d'implémenter les routes API nécessaires à l'inscription et à la connexion des utilisateurs, en veillant à la sécurité des données transmises et stockées.
+
+En parallèle, j'ai pris en charge la modélisation et la gestion de la base de données PostegreSQL via Prisma ORM. 
+Cela comprenait la définition des schémas de tables, la mise en place des relations entre les entités, ainsi que la gestion des migrations au fil des sprints.
+
+Mon rôle a évolué au cours du projet : si les premiers sprints ont été consacrés à la mise en place des fondations techniques - structure de la base de données et routes d'authentification, les sprints suivants m'ont permis d'affiner ces fonctionnalités, de les sécuriser davantage et de les connecter aux autres modules développés par l'équipe.
+
+Je n'ai pas eu de rôle secondaire officiel, mais j'ai régulièrement collaboré avec les développeurs frontend pour m'assurer que les données renvoyées par les API correspondaient bien aux besoins de l'interface
+
+
+
+Travail réalisé
+
+Au cours des différents sprints du projet CYNA, j'ai travaillé sur plusieurs fonctionnalités backend essentielles au bon fonctionnement de la plateforme e-commerce.
+
+
+Inscription et authentification utilisateur
+
+J'ai développé les routes NestJS permettant la création de compte et la connexion des utilisateurs. 
+Cela comprenait la validation des données saisies à l'inscription, le hachage des mots de passe avant stockage, et la gestion des erreurs côté serveur pour garantir une expérience fiable et sécurisée.
+
+
+Mise en place des tokens JWT
+
+J'ai intégré le système d'authentification basé sur les JSON Web Tokens (JWT), permettant de maintenir la session de l'utilisateur de manière sécurisée. 
+Chaque requête vers une route protégée est ainsi vérifiée via un middleware dédié qui contrôle la validité du token transmis dans l'en-tête HTTP.
+
+
+Modélisation de la base de données avec Prisma ORM
+
+J'ai participé à la conception du schéma de base de données via Prisma ORM, en définissant les modèles liés aux utilisateurs et à leurs informations d'inscription. 
+Et j'ai également géré les migrations nécessaires à chaque évolution du schéma au fil des sprints.
+
+
+Intégration de Stripe
+
+J'ai travaillé sur la connexion entre la plateforme et l'API Stripe pour gérer les paiements en ligne. 
+Cela impliquait la création des intentions de paiement côté serveur, la gestion des webhooks Stripe pour confirmer les transactions, et la mise à jour du statut d'abonnement de l'utilisateur en base de données après validation du paiement.
+
+
+
+Difficultés rencontrées
+
+Difficulté technique Prisma ORM et les relations entre entités
+
+L'une des premières difficultés techniques que j'ai rencontrées concernait la modélisation des relations entre entités avec Prisma ORM. 
+Comprendre comment lier correctement les tables entre elles, notamment les relations entre les utilisateurs, leurs abonnements et les produits n'était pas intuitif au départ. 
+Certaines requêtes échouaient sans que je comprenne immédiatement pourquoi, ce qui m'a obligée à relire attentivement la documentation et à tester de nombreuses configurations avant de trouver la bonne approche.
+
+
+Difficulté technique Intégration de Stripe et gestion des webhooks
+
+L'intégration de l'API Stripe a également représenté un défi important, en particulier la gestion des webhooks. 
+Comprendre le cycle de vie d'un paiement, intercepter correctement les événements Stripe côté serveur et mettre à jour la base de données en conséquence m'a demandé un temps d'adaptation significatif. 
+Les tests en environnement local avec Stripe CLI ont été essentiels pour valider le bon fonctionnement de ces flux.
+
+
+Ce qui m'a aidée à surmonter ces difficultés
+
+Mon parcours parallèle a joué un rôle déterminant dans ma capacité à surmonter ces obstacles. 
+L'expérience acquise chez Mewo m'avait déjà sensibilisée aux environnements de développement professionnels et aux bonnes pratiques de code. 
+
+Mon stage chez ARCUS m'avait quant à lui permis de gagner en autonomie technique et de développer des réflexes concrets face aux problèmes, notamment la lecture de documentation, la compréhension des messages d'erreur et la recherche de solutions structurées. 
+Cette courbe d'apprentissage, bien que progressive, m'a permis d'aborder les difficultés du projet CYNA avec plus de recul et de méthode qu'en début de formation.
+
+
+Difficulté organisationnelle Le temps d'apprentissage
+
+Sur le plan organisationnel, la principale difficulté a été de concilier le temps nécessaire à l'apprentissage de nouvelles technologies avec les délais imposés par les sprints. 
+Certaines tâches prenaient plus de temps que prévu, non pas par manque de travail, mais parce qu'elles nécessitaient d'abord de comprendre un concept ou un outil avant de pouvoir le mettre en œuvre. 
+Avec le recul, je pense que mieux anticiper ces phases d'apprentissage dès la planification du sprint aurait permis d'éviter quelques retards.
+
+
+
+Solutions mises en place
+
+Face aux difficultés avec Prisma ORM et les relations entre entités
+Pour débloquer ma compréhension de Prisma ORM, j'ai adopté une approche méthodique. 
+J'ai commencé par relire en détail la documentation officielle de Prisma, en me concentrant sur les sections dédiées aux relations entre modèles. 
+J'ai ensuite reproduit des cas simples dans un environnement de test isolé, afin de valider ma compréhension avant d'appliquer les solutions au projet. 
+L'expérience acquise lors de mon stage chez ARCUS, où j'avais déjà été confrontée à des problématiques de modélisation de données, m'a permis d'avoir le bon réflexe : tester petit à petit plutôt que de tout implémenter d'un coup sans valider chaque étape.
+
+
+Face aux difficultés avec Stripe et les webhooks
+
+Pour maîtriser l'intégration de Stripe, j'ai utilisé Stripe CLI pour simuler des événements en local et observer en temps réel le comportement de mes webhooks. 
+Cela m'a permis de comprendre concrètement le cycle de vie d'un paiement et d'identifier rapidement les points de blocage. 
+J'ai également consulté des exemples de la communauté Stripe sur GitHub, ce qui m'a aidée à structurer correctement la gestion des événements côté serveur. 
+Le fait d'avoir déjà manipulé des APIs tierces lors de mes expériences chez Mewo et en stage chez ARCUS m'a donné un cadre de référence utile pour aborder cette intégration avec méthode.
+
+
+Face à la difficulté organisationnelle Le temps d'apprentissage
+
+Pour mieux gérer le temps consacré à l'apprentissage sans pénaliser l'avancement du sprint, j'ai progressivement appris à mieux estimer mes tâches lors des différentes réunions. 
+J'ai commencé à distinguer les tâches que je maîtrisais de celles qui nécessitaient une phase d'exploration, et à en informer l'équipe en amont lors des meeting Teams. Cette transparence m'a permis d'être mieux soutenue et d'éviter de me retrouver bloquée seule sur un problème pendant trop longtemps.
+
+
+
+Compétences acquises
+
+Le projet CYNA a représenté pour moi une véritable accélération dans mon développement professionnel, aussi bien sur le plan technique que sur le plan personnel.
+
+Compétences techniques
+Compétence                     Niveau avant le projet          Niveau après le projet
+
+NestJS                                Débutant                            Opérationnel / autonome
+
+Prisma ORM                      Débutant                             Opérationnel / autonomeStripe 
+
+API & webhooks               Débutant                             Opérationnel / autonomeAuthentification 
+
+JWT                                   Débutant                             Opérationnel / autonome
+
+PostgreSQL                       Débutant                             Opérationnel / autonome
+
+Avant ce projet, je n'avais jamais utilisé NestJS ni Prisma ORM dans un contexte de projet réel. 
+L'expérience acquise chez Mewo et lors de mon stage chez ARCUS m'avait certes familiarisée avec le développement backend de manière générale, mais le projet CYNA m'a permis de franchir un cap décisif : passer de la théorie à une pratique concrète, en conditions réelles, avec des contraintes de délais et de qualité. 
+À l'issue du projet, je me sens capable d'implémenter de manière autonome un système d'authentification complet, de modéliser une base de données avec Prisma, et d'intégrer une solution de paiement via Stripe.
+
+
+Compétences transversales
+
+La compétence transversale que j'ai le plus développée au cours de ce projet est sans conteste mon autonomie et ma capacité à prendre des initiatives. 
+Face aux blocages techniques, j'ai appris à ne pas rester passive : chercher par moi-même, tester des solutions, consulter la documentation avant de solliciter de l'aide. 
+Cette posture, que j'avais commencé à construire lors de mon stage chez ARCUS, s'est véritablement consolidée tout au long des sprints du projet CYNA. 
+J'ai également gagné en confiance dans ma capacité à proposer des solutions et à défendre mes choix techniques au sein de l'équipe.
+
+
+
+Travail en équipe
+
+Notre équipe était composée de quatre personnes : Jessica, Emmanuel, François et Théo. 
+Nous avons travaillé en utilisant Microsoft Teams comme outil central de collaboration, en organisant notre projet en sprints successifs, qui ont structuré notre travail tout au long du projet.
+
+
+Organisation et rituels.
+
+Nous tenions un standup  via Teams, durant lequel chacun partageait ses avancées, ses objectifs et ses éventuels blocages. 
+Ces points étaient essentiels pour maintenir une vision partagée de l'avancement du projet et anticiper les dépendances entre nos tâches respectives. 
+Les tâches étaient réparties et suivies sur Trello, avec des colonnes Backlog, In Progress, In Review et Done, ce qui permettait à chacun de visualiser en temps réel l'état d'avancement global. 
+Chaque fonctionnalité développée faisait l'objet d'une pull request sur GitHub, relue et validée par au moins un autre membre de l'équipe avant d'être mergée.
+
+
+Dynamique de groupe
+
+L'ambiance au sein de l'équipe a été globalement saine et constructive tout au long du projet. 
+Nous n'avons pas connu de tensions majeures, ce qui témoigne selon moi d'une bonne communication et d'un respect mutuel entre les membres du groupe. 
+Chacun assumait ses responsabilités et n'hésitait pas à signaler ses blocages sans attendre, ce qui facilitait la coordination et évitait les retards en cascade.
+
+
+Le moment fort : livrer une fonctionnalité clé en équipe
+
+Le moment de collaboration que je retiens le plus est la livraison d'une fonctionnalité clé du projet, réalisée collectivement. 
+Voir l'ensemble des briques développées séparément, le backend, la base de données et l'interface s'assembler et fonctionner ensemble pour la première fois a été un moment particulièrement satisfaisant. 
+Cela a mis en lumière la complémentarité de nos rôles et la valeur du travail coordonné : chacun avait contribué à sa manière, et le résultat final était bien supérieur à ce que chacun aurait pu produire seul.
+
+
+
+Bilan personnel
+
+Ce projet a été une expérience particulièrement enrichissante, qui m'a permis de progresser sur des sujets que je ne maîtrisais pas du tout au départ. 
+La sécurité des mots de passe, la gestion des webhooks Stripe et la modélisation des relations en base de données étaient pour moi des territoires quasi inconnus en début de formation. 
+Les affronter dans un contexte de projet réel, avec des délais et des attentes concrètes, m'a obligée à aller plus loin que ce que j'aurais fait dans un cadre purement théorique.
+
+Ce que j'ai le plus apprécié dans cette expérience, c'est d'avoir appris à chercher des solutions par moi-même. 
+Relire une documentation, comprendre un message d'erreur, tester une hypothèse : ces réflexes que j'ai développés au fil des sprints sont selon moi les compétences les plus précieuses que je repars avec ce projet. 
+Et lorsque je me retrouvais véritablement bloquée, j'ai également appris à m'appuyer sur mon équipe sans hésiter ce qui est tout aussi important que l'autonomie.
+
+Ce que je ferais différemment si je recommençais : je prendrais davantage de temps en amont pour explorer les technologies clés avant de commencer à coder, afin d'éviter certains blocages en cours de sprint.
+Au global, cette expérience m'a rendue plus autonome, plus structurée dans ma façon d'aborder un problème technique, et m'a donné une vraie confiance en ma capacité à contribuer à des projets professionnels réels. Je repars de ce projet avec la certitude que le développement backend est une voie dans laquelle je souhaite continuer à progresser.
+
+Ma progression globale sur ce projet : 7/10
+
+Parce que j'ai su surmonter des difficultés techniques que je ne pensais pas pouvoir résoudre seule, tout en restant un membre fiable et impliqué de l'équipe. Je retire un point car je pense que j'aurais pu mieux anticiper mes phases d'apprentissage.
+

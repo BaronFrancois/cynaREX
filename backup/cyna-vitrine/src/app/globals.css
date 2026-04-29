@@ -1,0 +1,520 @@
+@import "tailwindcss";
+
+/* ── Variables partagées (ne changent pas avec le thème) ── */
+:root {
+  --cyna-ink: #1e0b3a;
+  --cyna-violet-950: #4c1d95;
+  --cyna-violet-600: #7c3aed;
+  --cyna-violet-500: #8b5cf6;
+  --cyna-violet-400: #a78bfa;
+  --cyna-magenta-500: #d946ef;
+  --cyna-gradient: linear-gradient(135deg, var(--cyna-violet-950) 0%, var(--cyna-violet-600) 45%, var(--cyna-magenta-500) 100%);
+}
+
+/* ── Thème sombre (défaut) ── */
+:root,
+html.dark {
+  --background: #15012b;
+  --foreground: #f0f0f8;
+  --cyna-hover-lilac: #e2dcff;
+  --cyna-section-solutions-bg: #12081f;
+  --cyna-card-surface: rgba(30, 11, 58, 0.72);
+}
+
+/* ── Thème clair ── */
+html.light {
+  --background: #f4f4fb;
+  --foreground: #1a1a2e;
+  --cyna-hover-lilac: #5b21b6;
+  --cyna-section-solutions-bg: #ede9fe;
+  --cyna-card-surface: rgba(238, 234, 255, 0.80);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-cyna-ink: var(--cyna-ink);
+  --color-cyna-600: var(--cyna-violet-600);
+  --color-cyna-500: var(--cyna-violet-500);
+  --color-cyna-400: var(--cyna-violet-400);
+  --color-cyna-700: #6d28d9;
+}
+
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ── Remap global (thème sombre) : toutes les classes Tailwind arbitraires qui
+   étaient hardcodées en noir (#050508 / #09090f) suivent maintenant la teinte
+   principale --background (#15012b).  Le thème clair reste géré plus bas avec
+   ses propres overrides (plus spécifiques). ── */
+:root .bg-\[\#09090f\],
+:root .bg-\[\#050508\] {
+  background-color: var(--background);
+}
+
+/* Titres vitrine : même police (Geist), même échelle, alignement gauche par défaut */
+.cyna-heading {
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-align: left;
+}
+@media (min-width: 768px) {
+  .cyna-heading {
+    font-size: 1.875rem;
+  }
+}
+.cyna-heading--center {
+  text-align: center;
+}
+
+.cyna-legal-body h2 {
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-align: left;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  color: #e5e7eb;
+}
+.cyna-legal-body h2:first-child {
+  margin-top: 0;
+}
+@media (min-width: 768px) {
+  .cyna-legal-body h2 {
+    font-size: 1.875rem;
+  }
+}
+html.light .cyna-legal-body h2 {
+  color: #2a2a44;
+}
+
+/* ============================================================
+   SKEUOMORPHIC BUTTON SYSTEM
+   ─ raised (default) → flush (hover) → pressed (active/active-state)
+   ============================================================ */
+
+/* Shared transition (.nav-sku-raised définit sa propre transition incl. border) */
+.btn-sku,
+.btn-sku-primary,
+.btn-sku-ghost,
+.nav-sku {
+  transition: box-shadow 0.1s ease, transform 0.1s ease;
+}
+
+/* ── Light variants (secondary / outline) ── */
+.btn-sku {
+  box-shadow:
+    0 3px 0 rgba(0, 0, 0, 0.45),
+    0 1px 3px rgba(0, 0, 0, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+.btn-sku:hover:not(:disabled) {
+  box-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.09);
+  transform: translateY(2px);
+}
+.btn-sku:active:not(:disabled),
+.btn-sku[data-active="true"] {
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.40),
+    inset 0 1px 2px rgba(0, 0, 0, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  transform: translateY(3px);
+}
+
+/* ── Primary (charte Cyna violet) ── */
+/* Effet "outset" moderne : socle violet foncé + ombre portée marquée + halo diffus + highlight interne haut */
+.btn-sku-primary {
+  box-shadow:
+    0 3px 0 #5b21b6,
+    0 6px 9px rgba(0, 0, 0, 0.45),
+    0 1px 6px rgba(124, 58, 237, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+.btn-sku-primary:hover:not(:disabled) {
+  box-shadow:
+    0 1px 0 #5b21b6,
+    0 3px 6px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(91, 33, 182, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transform: translateY(2px);
+}
+.btn-sku-primary:active:not(:disabled),
+.btn-sku-primary[data-active="true"] {
+  box-shadow:
+    inset 0 2px 6px rgba(91, 33, 182, 0.55),
+    inset 0 1px 3px rgba(0, 0, 0, 0.25);
+  transform: translateY(3px);
+}
+
+/* ── Ghost (très subtil, pas de fond) ── */
+.btn-sku-ghost {
+  box-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+.btn-sku-ghost:hover:not(:disabled) {
+  box-shadow:
+    0 0 0 transparent,
+    inset 0 0 0 1px rgba(255, 255, 255, 0.10);
+  transform: translateY(1px);
+}
+.btn-sku-ghost:active:not(:disabled),
+.btn-sku-ghost[data-active="true"] {
+  box-shadow:
+    inset 0 1px 4px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+  transform: translateY(2px);
+}
+
+/* ── Header nav pills ── */
+.nav-sku {
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  background: transparent;
+  box-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+.nav-sku:hover {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 0 0 transparent,
+    inset 0 0 0 1px rgba(255, 255, 255, 0.10);
+  transform: translateY(1px);
+}
+.nav-sku-active {
+  background: rgba(255, 255, 255, 0.08) !important;
+  box-shadow:
+    inset 0 1px 4px rgba(0, 0, 0, 0.40),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+  transform: translateY(1px);
+  color: #e8e8f0 !important;
+}
+
+/*
+ * Neumorphisme « relevé » (soft UI) — pastilles inactives
+ * Si l’onglet/filtre est actif (+ .nav-sku-header-active), la box-shadow ci-dessous
+ * est remplacée par la règle combinée (inset uniquement) : c’est normal dans les DevTools.
+ */
+.nav-sku-raised {
+    cursor: pointer;
+    color: #d1c9ee;
+    background: linear-gradient(#231450 0%, #111169 100%);
+    border: 1px solid #ffffff12;
+    border-radius: 9999px;
+    padding: .35rem 1rem;
+    transition: box-shadow .15s, transform .15s, border-color .15s, color .15s;
+    box-shadow: 0 2px #00000059, 0 3px 6px #00000038, inset 0 1px #ffffff75, 0 0 0 1px #ffffff08;
+}
+.nav-sku-raised:hover:not(.nav-sku-header-active) {
+  color: #a0a0c8;
+  border-color: #ffffff1f;
+  transform: translateY(.5px);
+  box-shadow: 0 1px #0006, 0 4px 8px #00000047, inset 0 1px #ffffff0f, 0 0 0 1px #ffffff0f;
+}
+
+/* Actif — pastilles sans variante violet (repli rare) */
+.nav-sku-raised.nav-sku-header-active:not(.nav-sku-header-login):not(.nav-sku-header-charte) {
+  background: linear-gradient(180deg, #14141e 0%, #0f0f1a 100%) !important;
+  color: #e0e0f0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  transform: translateY(1px);
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.50),
+    inset 0 1px 2px rgba(0, 0, 0, 0.30),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.04) !important;
+}
+
+/*
+ * Pastilles header uniquement — teintes charte Cyna (violet / indigo marque) — dark
+ */
+.nav-sku-raised.nav-sku-header-charte {
+    color: #c4b5fd;
+    background: linear-gradient(#2d1b69 0%, #1e1040 100%);
+    box-shadow: 0 2px #00000059, 0 3px 8px #0000009c, inset 0 1px #ffffff52, 0 0 0 1px #7c3aed33;
+}
+.nav-sku-raised.nav-sku-header-login {
+    color: #ffffff;
+    background: linear-gradient(#3800f4 0%, #9003a8 100%);
+    box-shadow: 0 2px #00000059, 0 3px 8px #0000009c, inset 0 1px #ffffffa3, 0px 2px 5px 0px #000000;
+    min-height: 2.25rem;
+    height: 2.25rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+}
+.nav-sku-raised.nav-sku-header-login:hover:not(.nav-sku-header-active) {
+    color: #ffffff;
+    border-color: #ffffff1f;
+    box-shadow: 0 1px #0006, 0 4px 8px #00000047, inset 0 1px #ffffff0f, 0 0 0 1px #ffffff0f;
+}
+/* Actif — pastilles header / filtres (charte demandée) */
+.nav-sku-raised.nav-sku-header-login.nav-sku-header-active {
+    transform: translateY(1px);
+    cursor: pointer !important;
+    color: #fff !important;
+    background: linear-gradient(#2606a8 0%, #5c0670 100%) !important;
+    border: 1px solid #00000061 !important;
+    box-shadow: 0 1px #8965ed, inset 0 2px 5px #000000bd, inset 0 1px #ffffff24 !important;
+}
+.nav-sku-raised.nav-sku-header-charte:hover:not(.nav-sku-header-active) {
+  color: #ddd6fe;
+  transform: translateY(.5px);
+  box-shadow: 0 1px #00000059, 0px 1px 3px #00000085, inset 0px 2px 3px #000000, 0 0 0 1px #000000;
+}
+.nav-sku-raised.nav-sku-header-charte.nav-sku-header-active {
+    transform: translateY(1px);
+    color: #ddd6fe !important;
+    background: linear-gradient(#2a195f 0%, #160b306b 100%) !important;
+    border: 1px solid #00000080 !important;
+    box-shadow: inset 0 8px 10px #00000075, inset 0 1px 2px #0811966b, inset 0 0 0 1px #b5b5b557, inset 0 -1px #ffffff14 !important;
+}
+
+/* ── Ghost inversé (sur fond sombre / coloré) ── */
+.btn-sku-inv {
+  box-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+.btn-sku-inv:hover:not(:disabled) {
+  box-shadow:
+    0 0 0 transparent,
+    inset 0 0 0 1px rgba(255, 255, 255, 0.40);
+  background-color: rgba(255, 255, 255, 0.10);
+  transform: translateY(1px);
+}
+.btn-sku-inv:active:not(:disabled),
+.btn-sku-inv[data-active="true"] {
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.08);
+  transform: translateY(2px);
+}
+
+/* ============================================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Menu mobile header : entrée verticale du panneau (wrapper interne, sans conflit avec le positionnement Radix) */
+@keyframes navMobilePopoverIn {
+  from {
+    opacity: 0;
+    transform: translateY(-0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-mobile-popover-inner {
+  animation: navMobilePopoverIn 0.28s ease-out forwards;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE/Edge legacy */
+  scrollbar-width: none; /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Accueil — grille « Trois niveaux » : ombre + teinte texte au survol */
+.home-solution-card {
+  transition:
+    box-shadow 0.35s ease,
+    transform 0.35s ease,
+    border-color 0.35s ease;
+}
+.home-solution-card:hover {
+  box-shadow:
+    0 1px #11111166,
+    0 4px 10px #0000004d,
+    inset 0 1px #5959596e,
+    0 0 0 1px #0000004d;
+}
+.home-solution-card:hover .solution-card-hover-text {
+  color: var(--cyna-hover-lilac);
+}
+.home-solution-card:hover .solution-card-hover-muted {
+  color: color-mix(in srgb, var(--cyna-hover-lilac) 72%, transparent);
+}
+
+/* ============================================================
+   LIGHT THEME OVERRIDES
+   Remplace les classes Tailwind hardcodées (dark) quand html.light
+   ============================================================ */
+
+/* ── Body ── */
+html.light body {
+  /* Override complet : retire l'overlay violet du thème sombre */
+  background: #f4f4fb;
+  color: #1a1a2e;
+}
+
+/* ── Fonds de page ── */
+html.light .bg-\[\#09090f\]  { background-color: #f4f4fb !important; }
+html.light .bg-zinc-950      { background-color: #eaeaf5 !important; }
+html.light .bg-zinc-900      { background-color: #ffffff !important; }
+html.light .bg-zinc-800      { background-color: #f0f0f8 !important; }
+html.light .bg-zinc-700      { background-color: #e0e0f0 !important; }
+
+/* Gradients hero (remplacés par fond clair) */
+html.light .from-\[\#0a0a23\]  { --tw-gradient-from: #f0effc !important; }
+html.light .via-\[\#1a1a40\]   { --tw-gradient-via:  #e8e6f8 !important; }
+html.light .to-\[\#2a2a60\]    { --tw-gradient-to:   #ddd9f4 !important; }
+
+/* ── Bordures ── */
+html.light .border-zinc-700  { border-color: #d0d0e8 !important; }
+html.light .border-zinc-800  { border-color: #dcdcf0 !important; }
+html.light .border-white\/10 { border-color: rgba(0,0,0,0.10) !important; }
+html.light .border-zinc-800\/80 { border-color: rgba(180,180,210,0.60) !important; }
+
+/* ── Textes ── */
+html.light .text-gray-100 { color: #1a1a2e !important; }
+html.light .text-gray-200 { color: #2a2a44 !important; }
+html.light .text-gray-300 { color: #44446a !important; }
+html.light .text-gray-400 { color: #66668a !important; }
+html.light .text-gray-500 { color: #8888aa !important; }
+html.light .text-gray-600 { color: #9898b8 !important; }
+html.light .hover\:text-gray-100:hover { color: #0f0f1e !important; }
+html.light .hover\:text-gray-200:hover { color: #1f1f3a !important; }
+html.light .hover\:text-gray-300:hover { color: #333360 !important; }
+
+/* ── Header nav ── */
+html.light .bg-zinc-950\/92  { background-color: rgba(255,255,255,0.94) !important; }
+html.light .bg-zinc-950\/88  { background-color: rgba(255,255,255,0.90) !important; }
+html.light .bg-zinc-950\/70  { background-color: rgba(255,255,255,0.82) !important; }
+html.light .bg-zinc-950\/60  { background-color: rgba(255,255,255,0.70) !important; }
+html.light nav .text-slate-200 { color: #3a3a5a !important; }
+html.light nav .hover\:text-cyna-500:hover { color: var(--cyna-violet-600) !important; }
+
+/* ── Pastilles nav skeuomorphic ── */
+html.light .nav-sku-raised {
+  background: linear-gradient(180deg, #f5f3ff 0%, #ede9fe 100%) !important;
+  color: #4c1d95 !important;
+  border-color: rgba(109,40,217,0.20) !important;
+  box-shadow:
+    0 2px 0 rgba(0,0,0,0.10),
+    0 3px 6px rgba(0,0,0,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.80) !important;
+}
+html.light .nav-sku-raised.nav-sku-header-charte {
+  background: linear-gradient(180deg, #ede9fe 0%, #ddd6fe 100%) !important;
+  color: #5b21b6 !important;
+  border-color: rgba(124,58,237,0.30) !important;
+  box-shadow:
+    0 2px 0 rgba(91,33,182,0.15),
+    0 3px 8px rgba(124,58,237,0.10),
+    inset 0 1px 0 rgba(255,255,255,0.70) !important;
+}
+/* Même pastille « pleine » violet CDC que Se connecter / Acheter (thème clair) */
+html.light .nav-sku-raised.nav-sku-header-login {
+  background: linear-gradient(180deg, #7c3aed 0%, #5b21b6 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(91, 33, 182, 0.45) !important;
+  box-shadow:
+    0 2px 0 rgba(91, 33, 182, 0.35),
+    0 4px 12px rgba(124, 58, 237, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+  min-height: 2.25rem;
+  height: 2.25rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}
+html.light .nav-sku-raised.nav-sku-header-login:hover:not(.nav-sku-header-active) {
+  color: #ffffff !important;
+  border-color: rgba(124, 58, 237, 0.55) !important;
+  box-shadow:
+    0 1px 0 rgba(91, 33, 182, 0.25),
+    0 5px 14px rgba(124, 58, 237, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+}
+html.light .nav-sku-raised.nav-sku-header-login.nav-sku-header-active {
+  transform: translateY(1px);
+  cursor: pointer !important;
+  color: #fff !important;
+  background: linear-gradient(#2606a8 0%, #5c0670 100%) !important;
+  border: 1px solid #00000061 !important;
+  box-shadow: 0 1px #8965ed, inset 0 2px 5px #000000bd, inset 0 1px #ffffff24 !important;
+}
+html.light .nav-sku-raised:hover:not(.nav-sku-header-active):not(.nav-sku-header-login) {
+  color: #4c1d95 !important;
+}
+html.light .nav-sku-header-active:not(.nav-sku-header-login) {
+  background: linear-gradient(180deg, #ddd6fe 0%, #c4b5fd 100%) !important;
+  color: #3b0764 !important;
+}
+
+/* ── Système de boutons skeuomorphic ── */
+html.light .btn-sku {
+  box-shadow:
+    0 3px 0 rgba(0,0,0,0.12),
+    0 1px 3px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.80) !important;
+}
+html.light .btn-sku:hover:not(:disabled) {
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.10),
+    inset 0 0 0 1px rgba(0,0,0,0.08) !important;
+}
+html.light .btn-sku:active:not(:disabled) {
+  box-shadow:
+    inset 0 2px 5px rgba(0,0,0,0.12),
+    inset 0 0 0 1px rgba(0,0,0,0.08) !important;
+}
+
+/* ── Inputs formulaire ── */
+html.light .bg-zinc-800.text-gray-200  { background-color: #f5f5ff !important; color: #1a1a2e !important; }
+html.light .bg-zinc-800.text-gray-100  { background-color: #f5f5ff !important; color: #1a1a2e !important; }
+html.light .placeholder-gray-500::placeholder { color: #9090b8 !important; }
+
+/* ── Hover interactif ── */
+html.light .hover\:bg-zinc-800:hover  { background-color: #ededf8 !important; }
+html.light .hover\:bg-zinc-700:hover  { background-color: #e0e0f4 !important; }
+
+/* ── Bouton outline sur fond clair ── */
+html.light .btn-sku.border.border-zinc-600 { border-color: #9090c8 !important; }
+html.light .btn-sku.border-2 {
+  border-color: color-mix(in srgb, var(--cyna-violet-600) 88%, #312e81) !important;
+}
+
+/* ── Transitions globales pour le passage de thème ── */
+body,
+nav,
+.bg-zinc-900,
+.bg-zinc-800,
+.bg-zinc-950 {
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.20s ease;
+}

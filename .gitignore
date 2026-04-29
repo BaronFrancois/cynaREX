@@ -1,0 +1,53 @@
+# === Secrets et données locales (ne jamais versionner) ===
+.env
+**/.env
+# Gabarits sans secrets (re-prise en compte explicite)
+!**/.env.example
+!**/.env.sample
+secrets/
+**/secrets/
+*.pem
+**/data/config.json
+**/data/database.json
+*.sqlite3
+*.db
+
+# CV PDF personnels à la racine 0mewo/cv/ (hors code Resume-Matcher)
+/cv/*.pdf
+
+# === Dépendances et environnements ===
+node_modules/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+
+# === Frontend / mobile ===
+.next/
+out/
+*.tsbuildinfo
+ios/Pods/
+android/.gradle/
+
+# === Outils & IDE (fichiers personnels) ===
+.cursor/
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# === Logs & caches ===
+*.log
+.npm
+.eslintcache
+coverage/
+.pytest_cache/
+htmlcov/
+
+# Fichiers optionnels volumineux / binaires locaux (décommenter si besoin)
+# *.pptx
+# *.pdf

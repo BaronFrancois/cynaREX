@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-label="Cyna product placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e0b3d"/>
+      <stop offset="100%" stop-color="#0d0520"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#7C00FF" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#7C00FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="shield" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#302082"/>
+      <stop offset="100%" stop-color="#7C00FF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="480" fill="url(#bg)"/>
+  <rect width="800" height="480" fill="url(#glow)"/>
+
+  <!-- Grid lines -->
+  <g stroke="#ffffff" stroke-opacity="0.04" stroke-width="1">
+    <line x1="0" y1="60" x2="800" y2="60"/>
+    <line x1="0" y1="120" x2="800" y2="120"/>
+    <line x1="0" y1="180" x2="800" y2="180"/>
+    <line x1="0" y1="240" x2="800" y2="240"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="360" x2="800" y2="360"/>
+    <line x1="0" y1="420" x2="800" y2="420"/>
+    <line x1="100" y1="0" x2="100" y2="480"/>
+    <line x1="200" y1="0" x2="200" y2="480"/>
+    <line x1="300" y1="0" x2="300" y2="480"/>
+    <line x1="400" y1="0" x2="400" y2="480"/>
+    <line x1="500" y1="0" x2="500" y2="480"/>
+    <line x1="600" y1="0" x2="600" y2="480"/>
+    <line x1="700" y1="0" x2="700" y2="480"/>
+  </g>
+
+  <!-- Shield / Cyna mark — centré, taille 160px -->
+  <g transform="translate(400,220) scale(5)">
+    <path d="M16.527 1.009C16.922 1.062 17.327 1.097 17.726 1.187C21.526 2.01 24.143 4.268 25.468 7.898C25.644 8.388 25.727 8.914 25.836 9.435C25.889 9.703 25.836 9.755 25.547 9.755C24.703 9.755 23.859 9.807 23.015 9.748C21.121 9.598 19.316 9.166 17.69 8.215C16.635 7.615 15.563 7.598 14.511 8.215C13.399 8.864 12.692 9.775 12.701 11.079C12.701 11.314 12.754 11.565 12.843 11.776C13.302 12.836 14.008 13.705 15.193 14.063C16.163 14.346 17.066 14.147 17.919 13.69C19.168 13.02 20.436 12.546 21.862 12.396C22.987 12.276 24.129 12.24 25.262 12.196C25.719 12.179 25.861 12.367 25.826 12.837C25.692 14.368 25.056 15.739 24.063 16.899C22.572 18.621 20.805 19.862 18.573 20.411C16.453 20.935 14.332 20.961 12.358 20.092C9.441 18.841 7.277 16.718 6.45 13.545C4.928 7.845 8.071 3.076 12.975 1.406C13.837 1.111 14.732 0.945 15.649 0.883C15.712 0.883 15.774 0.857 15.847 0.838H16.535L16.527 1.009Z" fill="url(#shield)" transform="translate(-16,-11)"/>
+  </g>
+
+  <!-- "CYNA" wordmark -->
+  <text x="400" y="340" text-anchor="middle"
+        font-family="'Inter','Helvetica Neue',Arial,sans-serif"
+        font-size="36" fill="#c4b5fd" font-weight="700" letter-spacing="10">CYNA</text>
+
+  <!-- Subtitle -->
+  <text x="400" y="375" text-anchor="middle"
+        font-family="'Inter','Helvetica Neue',Arial,sans-serif"
+        font-size="13" fill="#7c5cbf" letter-spacing="3">VISUEL BIENTÔT DISPONIBLE</text>
+</svg>

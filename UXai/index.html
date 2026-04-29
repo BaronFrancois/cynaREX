@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UXai - Prototype</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Prototype local</p>
+          <h1>UXai</h1>
+        </div>
+        <div class="topbar-actions">
+          <button id="generateBtn" class="primary-button">Generer l'UI</button>
+          <button id="exportBtn" class="ghost-button">Voir l'export</button>
+        </div>
+      </header>
+
+      <section class="prompt-panel surface-card">
+        <div class="prompt-copy">
+          <span>Prompt general</span>
+          <strong>Decrivez une interface, puis iterez sur une selection.</strong>
+        </div>
+        <textarea id="globalPrompt" rows="2">Cree une landing page premium pour un outil no-code qui fige le front avant de le donner a un LLM.</textarea>
+      </section>
+
+      <main class="workspace">
+        <aside class="left-panel surface-card">
+          <div class="panel-header">
+            <span>Calques</span>
+            <button id="collapseAllBtn" class="tiny-button">Tout voir</button>
+          </div>
+          <div id="layersTree" class="layers-tree"></div>
+
+          <div class="panel-section">
+            <div class="panel-header compact">
+              <span>Pages & frames</span>
+            </div>
+            <div id="framesPanel" class="mini-panel-list"></div>
+          </div>
+
+          <div class="panel-section">
+            <div class="panel-header compact">
+              <span>Assets & tokens</span>
+            </div>
+            <div id="assetsPanel" class="mini-panel-list"></div>
+          </div>
+
+          <div class="panel-section">
+            <div class="panel-header compact">
+              <span>Device</span>
+            </div>
+            <select id="deviceSelect" class="field"></select>
+            <label class="check-row">
+              <input id="safeAreaToggle" type="checkbox" checked />
+              Afficher safe areas
+            </label>
+          </div>
+
+          <div class="panel-section">
+            <div class="panel-header compact">
+              <span>Prompt local</span>
+            </div>
+            <textarea id="localPrompt" class="field textarea" rows="5">Rends cet element plus premium, plus lisible et mieux prepare pour un LLM developpeur.</textarea>
+            <button id="localPromptBtn" class="primary-button full">Appliquer a la selection</button>
+          </div>
+        </aside>
+
+        <section class="canvas-zone surface-card">
+          <div class="canvas-toolbar">
+            <div>
+              <p class="eyebrow">Canvas</p>
+              <h2 id="currentDeviceTitle">Desktop 1440</h2>
+            </div>
+            <div class="toolbar-pills">
+              <span id="selectedPill">Selection : Page</span>
+              <span id="surfacePill">Surface : web-page</span>
+            </div>
+          </div>
+
+          <div id="modeTabs" class="mode-tabs" aria-label="Modes UXai"></div>
+
+          <div class="tool-strip" aria-label="Outils canvas">
+            <button id="moveToolBtn" class="tool-button active" title="Move (M)">Move <kbd>M</kbd></button>
+            <button id="zoomOutBtn" class="tool-button" title="Zoom arrière">-</button>
+            <span id="zoomValue" class="tool-value">100%</span>
+            <button id="zoomInBtn" class="tool-button" title="Zoom avant">+</button>
+            <button id="recenterBtn" class="tool-button" title="Recentrer">Recentrer</button>
+            <button id="resizeToolBtn" class="tool-button" title="Resize">Resize</button>
+            <button id="frameToolBtn" class="tool-button" title="Frame">Frame</button>
+            <button id="componentToolBtn" class="tool-button" title="Component">Component</button>
+            <button id="commentToolBtn" class="tool-button" title="Comment">Comment</button>
+            <button id="prototypeToolBtn" class="tool-button" title="Prototype link">Prototype</button>
+            <button id="inspectToolBtn" class="tool-button" title="Inspect">Inspect</button>
+          </div>
+
+          <div class="device-stage">
+            <div id="deviceFrame" class="device-frame">
+              <div id="safeAreaTop" class="safe-area safe-area-top"></div>
+              <div id="safeAreaBottom" class="safe-area safe-area-bottom"></div>
+              <div id="contextToolbar" class="context-toolbar hidden"></div>
+              <div id="canvas" class="canvas"></div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="right-panel surface-card">
+          <div class="panel-header">
+            <span>Proprietes</span>
+            <span id="nodeTypeBadge" class="badge">page</span>
+          </div>
+
+          <div id="propertiesPanel" class="properties-panel"></div>
+
+          <div class="panel-section">
+            <div class="panel-header compact">
+              <span>Figma x UXai</span>
+            </div>
+            <div id="figmaFeaturesPanel" class="feature-panel"></div>
+          </div>
+
+          <div class="panel-section">
+            <div class="panel-header compact">
+              <span>Application builder</span>
+            </div>
+            <div id="appBuilderPanel" class="feature-panel"></div>
+          </div>
+
+          <div class="panel-section">
+            <div class="panel-header compact">
+              <span>Audits</span>
+            </div>
+            <div id="auditPanel" class="audit-panel"></div>
+          </div>
+        </aside>
+      </main>
+
+      <section id="exportDrawer" class="export-drawer surface-card hidden">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Handoff LLM</p>
+            <h2>Bundle d'export</h2>
+          </div>
+          <button id="closeExportBtn" class="ghost-button">Fermer</button>
+        </div>
+        <div id="exportTabs" class="export-tabs"></div>
+        <pre id="exportContent" class="export-content"></pre>
+      </section>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

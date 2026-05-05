@@ -1804,4 +1804,96 @@ style.textContent = `
 }`;
 document.head.appendChild(style);
 
+// === Persistance locale (localStorage) — ajoute par autopilot 2026-05-04 ===
+// Sauvegarde le project + UI minimal a chaque render (debounced 300 ms).
+// Restaure au boot si une sauvegarde existe.
+// Reset disponible via window.UXAi.reset() dans la console.
+
+const UXAI_STORAGE_KEY = "uxai.project.v1";
+let _uxaiSaveTimer = null;
+
+function saveProjectToStorage() {
+  try {
+    const payload = {
+      project: state.project,
+      ui: {
+        selectedId: state.selectedId,
+        activeMode: state.activeMode,
+        currentDeviceId: state.currentDeviceId,
+        zoom: state.zoom,
+        safeAreasVisible: state.safeAreasVisible,
+        activeTool: state.activeTool
+      },
+      savedAt: new Date().toISOString(),
+      version: 1
+    };
+    localStorage.setItem(UXAI_STORAGE_KEY, JSON.stringify(payload));
+  } catch (err) {
+    console.warn("[UXai] persistence save failed", err);
+  }
+}
+
+function loadProjectFromStorage() {
+  try {
+    const raw = localStorage.getItem(UXAI_STORAGE_KEY);
+    if (!raw) return false;
+    const data = JSON.parse(raw);
+    if (!data || !data.project || !data.project.nodes || !data.project.rootId) {
+      return false;
+    }
+    state.project = data.project;
+    if (data.ui) {
+      if (data.ui.selectedId && state.project.nodes[data.ui.selectedId]) {
+        state.selectedId = data.ui.selectedId;
+      }
+      if (data.ui.activeMode) state.activeMode = data.ui.activeMode;
+      if (data.ui.currentDeviceId) state.currentDeviceId = data.ui.currentDeviceId;
+      if (typeof data.ui.zoom === "number") state.zoom = data.ui.zoom;
+      if (typeof data.ui.safeAreasVisible === "boolean") state.safeAreasVisible = data.ui.safeAreasVisible;
+      if (data.ui.activeTool) state.activeTool = data.ui.activeTool;
+    }
+    return true;
+  } catch (err) {
+    console.warn("[UXai] persistence load failed", err);
+    return false;
+  }
+}
+
+function clearStoredProject() {
+  try { localStorage.removeItem(UXAI_STORAGE_KEY); } catch (err) { /* noop */ }
+}
+
+function scheduleSave() {
+  if (_uxaiSaveTimer) clearTimeout(_uxaiSaveTimer);
+  _uxaiSaveTimer = setTimeout(saveProjectToStorage, 300);
+}
+
+// Wrappe render() pour declencher la sauvegarde apres chaque rendu.
+// function declarations sont reassignables en mode non-strict (cas ici).
+const _uxaiOrigRender = render;
+render = function () {
+  _uxaiOrigRender.apply(this, arguments);
+  scheduleSave();
+};
+
+// Restaure depuis localStorage AVANT le premier init().
+loadProjectFromStorage();
+
+// Expose un helper console pour reset / inspect.
+window.UXAi = {
+  reset: function () {
+    if (confirm("Effacer la sauvegarde locale UXai et recharger ?")) {
+      clearStoredProject();
+      location.reload();
+    }
+  },
+  save: saveProjectToStorage,
+  load: function () { loadProjectFromStorage(); render(); },
+  storageKey: UXAI_STORAGE_KEY,
+  inspect: function () {
+    const raw = localStorage.getItem(UXAI_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  }
+};
+
 init();

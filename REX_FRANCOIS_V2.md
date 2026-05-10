@@ -10,12 +10,6 @@
 
 ---
 
-## Sommaire
-
-*Sommaire auto-généré à la conversion Word.*
-
----
-
 ## Introduction
 
 Ce document est mon retour d'expérience personnel sur le projet CYNA, plateforme e-commerce développée dans le cadre de la formation CPI DEV. Le projet visait à livrer une vitrine en ligne pour CYNA, entreprise spécialisée en cybersécurité, autour de trois familles de services : SOC (*Security Operations Center*), EDR (*Endpoint Detection & Response*) et XDR (*Extended Detection & Response*). La solution finale s'appuie sur une vitrine Next.js, une API NestJS, une base PostgreSQL gérée par Prisma, une intégration Stripe et une application mobile Expo.

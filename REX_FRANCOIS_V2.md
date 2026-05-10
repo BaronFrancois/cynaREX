@@ -209,6 +209,7 @@ Le tableau ci-dessous synthétise mon niveau avant et après le projet, sur les 
 
 | Compétence | Niveau avant | Niveau après | Comment |
 |---|---|---|---|
+| **HTML / CSS classique** | Opérationnel (base solide) | Maintenu | Compétence de base que je conserve ; intervient en arrière-plan dans les choix de structure et de style |
 | **Next.js / React 19** | Notions | Opérationnel | Implémentation complète d'une vitrine multi-pages avec App Router, Server / Client Components |
 | **TypeScript en équipe** | Notions | Opérationnel | Typage des composants, des services API, des types partagés (`types/produit.ts`) |
 | **Tailwind CSS 4** | Aucun | Opérationnel (avec réserves personnelles) | Apprentissage en cours de projet ; reste un outil que j'utilise sans en être pleinement convaincu |
@@ -218,7 +219,7 @@ Le tableau ci-dessous synthétise mon niveau avant et après le projet, sur les 
 | **Internationalisation (i18n)** | Aucun | Opérationnel sur cas simples | Bascule FR/EN via `LanguageSwitcher` et `I18nProvider` |
 | **Variables d'environnement, config multi-env** | Débutant | Opérationnel | `.env` propre pour la démo, distinction local/test/démo |
 | **Lecture critique d'un dépôt existant** | Intermédiaire | Confirmé | Prise en main de la chaîne complète pour préparer le backup |
-| **Outils SQL (phpMyAdmin, pageAdmin)** | Aucun | Notions | Découverte en contexte projet, prise en main progressive |
+| **Outils SQL (phpMyAdmin, pageAdmin)** | Aucun | Opérationnel sur cas standard (avec support documentation) | Mise en place et utilisation en contexte projet ; je peux reproduire les manipulations à partir d'un tutoriel |
 | **Identité visuelle / *design system* léger** | Débutant | Intermédiaire | Variables CSS d'identité, logo SVG, *dark theme* forcé |
 
 Le saut le plus net pour moi concerne deux compétences : **Stripe**, parce que c'est une technologie centrale dans l'e-commerce moderne et que j'en ai vu le fonctionnement réel ; et **la lecture d'un projet existant**, parce que la phase de stabilisation finale m'a obligé à entrer dans un état du dépôt que je n'avais pas écrit seul, à identifier ce qui marche, ce qui plante, ce qui peut être lancé. Cette compétence a une valeur professionnelle directe : c'est exactement ce qu'on fait en arrivant sur un projet existant en entreprise.
@@ -284,7 +285,7 @@ C'est aussi à ce moment-là que j'ai mesuré le bénéfice du **travail collabo
 
 ## 7. Bilan personnel
 
-Le projet CYNA a été dense et exigeant, particulièrement dans sa dernière semaine. Il m'a confronté à une situation que je retrouverai en contexte professionnel : un livrable attendu, une date fixe, une chaîne technique partiellement instable, une équipe avec des niveaux différents, et la nécessité de présenter quelque chose de fonctionnel.
+Le projet CYNA a été dense et exigeant, particulièrement dans sa dernière semaine. Il m'a confronté à une situation que je retrouverai en contexte professionnel : un livrable attendu, une date fixe, une chaîne technique partiellement instable, une équipe en apprentissage partagé sur plusieurs technologies en même temps, et la nécessité de présenter quelque chose de fonctionnel.
 
 ### 7.1 Ce que je me suis découvert sur ma place en équipe
 
@@ -318,7 +319,7 @@ Sur la base de l'expérience CYNA, voici ce que je mettrais en place dès le dé
 
 **Ma progression globale sur ce projet : 7 / 10.**
 
-Justification : j'ai livré une vitrine cohérente, contribué à la stabilisation collective de la démo, conçu une maquette qui a tenu la route, et progressé nettement sur Next.js, TypeScript, Tailwind, Stripe et Figma. Je retire trois points parce que j'aurais pu pousser plus tôt sur la cohérence des contrats front / API, anticiper la stabilisation finale dès le milieu du projet, structurer plus tôt l'accompagnement des profils débutants dans l'équipe, et demander dès le départ un environnement de test partagé. Le 7 reflète **un livrable défendable et une progression réelle**, pas un projet exécuté proprement de bout en bout.
+Justification : j'ai livré une vitrine cohérente, contribué à la stabilisation collective de la démo, conçu une maquette qui a tenu la route, et progressé nettement sur Next.js, TypeScript, Tailwind, Stripe et Figma. Je retire trois points parce que j'aurais pu pousser plus tôt sur la cohérence des contrats front / API, anticiper la stabilisation finale dès le milieu du projet, structurer plus tôt les apprentissages partagés au sein de l'équipe (chacun découvrait des outils en parallèle, et un cadre commun aurait fluidifié les échanges), et demander dès le départ un environnement de test partagé. Le 7 reflète **un livrable défendable et une progression réelle**, pas un projet exécuté proprement de bout en bout.
 
 ---
 
@@ -333,35 +334,3 @@ Le BC3 et la rédaction du DAT (rendu prévu le 27 mai 2026) prolongeront ce tra
 ---
 
 *Document personnel rédigé à la première personne. Aucune section n'est issue d'un copier-coller des REX d'autres membres de l'équipe.*
-
----
-
-# QUESTIONS DE VALIDATION (à supprimer avant rendu)
-
-À ton retour, voici les points où j'ai pris des libertés ou rempli des trous, à valider/corriger avant qu'on passe à la mise en forme Word :
-
-## Section 4 — Solutions
-1. **§ 4.1 Tailwind apprivoisé** : j'ai écrit que tu as adopté une approche en deux temps (utilitaires pour le standard, composants nommés pour le détail). C'est une reconstruction logique de ma part — confirme ou reformule.
-2. **§ 4.5 Solutions non appliquées** : j'ai listé hosting unifié + outil mixte + jalon démo + temps apprentissage, comme des choses à faire dès J1 d'un projet futur. OK ou tu veux ajouter / retirer ?
-
-## Section 5 — Compétences
-3. **Tableau avant/après** : j'ai mis tous tes niveaux avant à *Notions / Débutant / Aucun*. Tu confirmes ou certaines compétences étaient déjà à *Opérationnel* avant CYNA ?
-4. **i18n FR/EN** : tu as confirmé en avoir touché — niveau avant *Aucun* / après *Opérationnel sur cas simples*. Tu valides ?
-5. **Outils SQL (phpMyAdmin, pageAdmin)** : niveau après *Notions* — tu confirmes que tu n'es pas allé plus loin que la découverte ?
-
-## Section 6 — Équipe
-6. **Rôles attribués** : Théo (lead backend/déploiement), Jessica (backend/auth/Stripe serveur), Emmanuel (front/tests/apprentissage), toi (frontend/vitrine/maquette/backup). Est-ce que c'est juste, surtout pour Théo et Emmanuel ? Si non, donne-moi la vraie répartition.
-7. **Stripe côté serveur attribué à Jessica** : je l'ai posé parce qu'il fallait quelqu'un, et que toi tu décris l'intégration **côté client**. Si c'est Théo qui a fait le serveur Stripe, je corrige.
-
-## Section 7 — Bilan
-8. **Note 7/10** : confirmée ; justification posée. OK pour la formulation ?
-9. **Apprentissage "structurer plus tôt l'accompagnement des profils débutants"** : j'ai gardé ça du REX existant qui parlait de Jessica/Emmanuel comme "débutants en programmation". Toi dans ton brain dump tu as plutôt dit "tout le monde était en train de découvrir les différents principes en même temps". Plus juste pour toi de retirer cette phrase ou de la reformuler en "tout le monde était en apprentissage simultané" ?
-
-## Cohérence générale
-10. **Période** : j'ai écrit "huit mois" en conclusion (sept 2025 → mai 2026). Confirme.
-11. **Longueur** : on est à environ **13 pages Word** (estimation). Dans la cible 12-14p. Tu trouves ça équilibré ou certaines sections sont trop longues / trop courtes ?
-
-## Mise en forme Word (à faire après validation contenu)
-12. **Couleurs** : rouge = `#` (titre principal du document), bleu = `##` (sections principales 1 à 7, conclusion, sommaire), vert = `###` (sous-sections 1.1, 2.1, etc.). Tu confirmes ce mapping ?
-13. **Police** : pas de préférence évoquée. Je propose Calibri ou Arial pour le corps. Tu as un standard CYNA/CPI imposé ?
-14. **Interligne** : 1.15 ou 1.5 ? (1.5 gonfle artificiellement le nombre de pages, 1.15 est plus compact et lisible.)
